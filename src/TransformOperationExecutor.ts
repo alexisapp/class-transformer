@@ -438,6 +438,9 @@ export class TransformOperationExecutor {
         keys = Array.from(object.keys());
       } else {
         keys = Object.keys(object);
+        if (typeof Object.getOwnPropertySymbols !== 'undefined') {
+          keys = [...keys, ...Object.getOwnPropertySymbols(object)];
+        }
       }
     }
 
